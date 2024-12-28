@@ -6,13 +6,13 @@ class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
     class Meta:
-        model = CustomUser  # Використовуємо вашу кастомну модель
-        fields = ['username', 'email', 'password1', 'password2']  # Поля для реєстрації
+        model = CustomUser
+        fields = ['username', 'email', 'password1', 'password2']
 
 class CustomUserChangeForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['avatar']  # Переконайтеся, що тут є поле avatar
+        fields = ['avatar']
 
 class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))

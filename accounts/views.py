@@ -1,65 +1,59 @@
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout
-from .forms import RoleForm
-
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
-def welcome_view(request):
+from .forms import (
+    LoginForm,
+    ProfileEditForm,
+    UserEditForm,
+    UserRegistrationForm,
+)
+from .models import Profile
+
+
+def user_login(request):
     if request.method == 'POST':
-        return redirect('choose_role')
-    return render(request, 'accounts/welcome.html')
-
-def choose_role_view(request):
-    if 'role' not in request.session:
-        if request.method == 'POST':
-            form = RoleForm(request.POST)
-            if form.is_valid():
-                request.session['role'] = form.cleaned_data['role']
-                return redirect('register')
-        else:
-            form = RoleForm()
-        return render(request, 'accounts/choose_role.html', {'form': form})
-    return redirect('register')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(
+                request,
+                username=cd['username'],
+                password=cd['password'],
+            )
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('dashboard')
+                else:
+                    return HttpResponse('Disabled accounts')
+            else:
+                return HttpResponse('Invalid login')
+    else:
+        form = LoginForm()
+    return render(request, 'accounts/login.html', {'form': form})
 
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, 'Реєстрація успішна!')
-            return redirect('user_profile')
-        else:
-            messages.error(request, 'Помилка при реєстрації. Спробуйте ще раз.')
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(user_form.cleaned_data['password'])
+            new_user.save()
+            Profile.objects.create(user=new_user)
+            return redirect('dashboard')
     else:
-        form = UserCreationForm()
+        user_form = UserRegistrationForm()
+    return render(
+        request,
+        'account/register.html',
+        {'user_form': user_form}
+    )
 
-    return render(request, 'accounts/register_user'
-                           '.html', {'form': form})
 
-def login_user(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-
-            if user.is_staff or user.is_superuser:
-                return redirect('admin_home')
-            else:
-                messages.success(request, 'Ви успішно увійшли!')
-                return redirect('home')
-        else:
-            messages.error(request, 'Неправильний логін або пароль.')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
-
-def logout_user(request):
-    logout(request)
-    messages.success(request, 'Ви вийшли з системи.')
-    return redirect('home')
+@login_required
+def dashboard(request):
+    return render(request, 'personal_cabinet/dashboard.html')

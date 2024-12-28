@@ -1,26 +1,261 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна сторінка</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Product Description</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <title>Digital Payment Solution</title>
+
+</head>
 <body>
-    <div class="container text-center mt-5">
-        <h1>Вітаємо на головній сторінці!</h1>
-        <p>Це головна сторінка вашого додатку.</p>
-         <a href="{% url 'login' %}">
-                    <i class="bi bi-person-fill" style="font-size: 50px;"></i>
-                </a>
+
+    <header>
+        <div class="logo">Dilocash</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="#">Курси</a></li>
+                <li><a href="#">Про нас</a></li>
+                <li><a href="#">Тести</a></li>
+                <i class="bi bi-calendar-heart"></i>
+            </ul>
+        </nav>
+        <div class="cta-buttons">
+            <a href="{% url 'login' %}">Log In</a>
+            <a href="{% url 'register' %}" style="background-color: #ffd700; color: #1a1a1a;">Sign Up</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Fast And Simple Digital Payment Solution</h1>
+        <p>Many credit cards are lost by the users, stolen, or expired. But these cards can still be used by others. This app can provide you with a card and necessary information. They also offer burner credit cards (single-use virtual cards).</p>
+        <div class="buttons">
+            <button>Get It Now</button>
+            <button>Download App</button>
+        </div>
+    </section>
+
+    <div class="product-container">
+        <div class="product-description">
+            <h1>Product Subtitle</h1>
+            <p>Product description goes here. Cupcake ipsum dolor sit amet sweet dessert. Jelly-o pie croissant donut. Carrot cake cake donut oat cake; Sugar plum cake gummies macaroon. Carrot cake cake donut oat cake. Sugar plum cake gummies macaroon.</p>
+
+            <div class="features">
+                <strong>Features:</strong>
+                <ul>
+                    <li>• Cupcake ipsum dolor sit amet sweet dessert.</li>
+                    <li>• Sugar plum cake gummies macaroon.</li>
+                    <li>• Carrot cake cake donut oat cake.</li>
+                </ul>
+            </div>
+
+            <div class="price">$500</div>
+            <a href="#" class="add-to-cart">Add to Cart</a>
+        </div>
+
+        <div class="product-image">
+            <div id="carouselExampleIndicators" class="carousel slide">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                </div>
+                <div class="carousel-item">
+                </div>
+                <div class="carousel-item">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+        </div>
     </div>
 
+  <section class="advantages">
+    <h2>НАШИ ПРЕИМУЩЕСТВА</h2>
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <i class="bi bi-cash-stack"></i>
+        <h3>Фиксированная цена</h3>
+        <p>В договоре прописывается окончательная стоимость работ, которая остается неизменной.</p>
+      </div>
+      <div class="advantage-item">
+        <i class="bi bi-house-door"></i>
+        <h3>Качественные материалы</h3>
+        <p>Мы используем только современные материалы, соответствующие стандартам.</p>
+      </div>
+      <div class="advantage-item">
+        <i class="bi bi-award"></i>
+        <h3>Гарантия 10 лет</h3>
+        <p>Предоставляем гарантию на все работы и используемые технологии.</p>
+      </div>
+      <div class="advantage-item">
+        <i class="bi bi-truck"></i>
+        <h3>Бесплатная доставка</h3>
+        <p>Вся доставка осуществляется за наш счет.</p>
+      </div>
+      <div class="advantage-item">
+        <i class="bi bi-stopwatch"></i>
+        <h3>Готовый дом за 30 дней</h3>
+        <p>Строительство и установка занимают не более 30 дней.</p>
+      </div>
+      <div class="advantage-item">
+        <i class="bi bi-brush"></i>
+        <h3>Собственный дизайн</h3>
+        <p>Вы можете выбрать из наших готовых решений или предложить свой дизайн.</p>
+      </div>
+    </div>
+  <div class="timeline-container">
+        <h1>Education</h1>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="circle-wrapper">
+                    <div class="circle">
+                        <span id="circle-number">15</span>
+                    </div>
+                    <div class="circle-label">Кількість предметів</div>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="circle-wrapper">
+                    <div class="circle">
+                        <span id="circle-number">561</span>
+                    </div>
+                    <div class="circle-label">Кількість 200 бальників</div>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="circle-wrapper">
+                    <div class="circle">
+                        <span id="circle-number">15</span>
+                    </div>
+                    <div class="circle-label">Кількість викладчів</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="welcome-section">
+  <h1>Welcome to Natalie Gibson</h1>
+  <p>Based in Christchurch, our clinic specializes in tailor-made, results-driven beauty treatments. Natalie Gibson Skin and Brows offers guests a variety of services and products that will help you feel young, energized and stunning every day. We put safety first and stay up to date on the best techniques and latest treatment developments.</p>
+</div>
 
-    .choice_lesson
+  <div class="pricing-card">
+    <div class="badge">Popular Plan</div>
+    <h1>$124/month</h1>
+    <p>Perfect for marketers / scale up business</p>
+    <ul>
+      <li><span></span>Unlimited monthly emails</li>
+      <li><span></span><span class="highlight">3 seats</span></li>
+      <li><span></span>Custom user permission</li>
+      <li><span></span>Unlimited audience</li>
+      <li><span></span>Unlimited website</li>
+      <li><span></span>Email support <span class="highlight">24/7 priority</span></li>
+    </ul>
+    <button class="cta">Start 7-days Free Trial</button>
+  </div>
+
+  <div class="testimonial-card">
+    <div class="quote-icon">“</div>
+    <h3>Highly Recommended</h3>
+    <p>
+      I have been using this product for over 2 years. I take it every morning. It helps me with energy, concentration, and focus. It also helps me maintain my body weight steadily. I highly recommend this product.
+    </p>
+    <div class="author">Kasha M.</div>
+    <div class="company">Better Business Bureau®</div>
+  </div>
+  </section>
+{% block content %}
+<h2>Залишити відгук</h2>
+<form method="POST" class="comment-form">
+    {% csrf_token %}
+    <h2>Залишити відгук</h2>
+    {{ form.as_p }}
+    <button type="submit">Надіслати відгук</button>
+</form>
 
 
+  <h2>Всі відгуки <i id="toggleReviews" class="bi bi-chevron-down"></i></h2>
+  <div id="reviewsContainer" class="reviews-container" style="display: none;">
+    <ul>
+      {% for review in reviews %}
+        <li>
+          <strong>{{ review.user.username }}</strong> ({{ review.created_at }})<br>
+          <p>{{ review.content }}</p>
+        </li>
+      {% empty %}
+        <li>Немає жодних відгуків.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Про нас</h5>
+                    <p>Ми - команда професіоналів, яка займається розробкою та впровадженням найкращих технологій для вашого бізнесу. Ми прагнемо до інновацій та ефективних рішень.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Швидкі посилання</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Головна</a></li>
+                        <li><a href="#" class="text-white">Про нас</a></li>
+                        <li><a href="#" class="text-white">Послуги</a></li>
+                        <li><a href="#" class="text-white">Контакти</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Контакти</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone-alt"></i> Телефон: +123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> Email: info@company.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Адреса: вул. Примерна 123, Київ, Україна</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center mt-4">
+                    <p>&copy; 2024 Всі права захищені. <a href="#" class="text-white">Політика конфіденційності</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+  document.getElementById("toggleReviews").addEventListener("click", function() {
+    var reviewsContainer = document.getElementById("reviewsContainer");
+    var icon = document.getElementById("toggleReviews");
+
+    if (reviewsContainer.style.display === "none") {
+      reviewsContainer.style.display = "block";
+      icon.classList.add("open");
+    } else {
+      reviewsContainer.style.display = "none";
+      icon.classList.remove("open");
+    }
+  });
+
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybQbF8zYlC45b2zlvDlFQp4O3z5pFv6cfXqY7OgHmg1Q2skXbP" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-cu8ct7rnK7m7mY73Fy3O9DpQp6OY5cRSLKx3xtbFq9Cq47b8sIglrW7N0jPeUjK6" crossorigin="anonymous"></script>
 </body>
-
 </html>

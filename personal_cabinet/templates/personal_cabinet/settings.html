@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загальнодоступний профіль</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .sidebar {
+            background-color: #f5f5f5;
+            border-right: 2px solid #e0e0e0;
+        }
+        .nav-link {
+            color: #495057;
+        }
+        .nav-link.active {
+            color: #212529;
+            font-weight: bold;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+        .btn-success:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+        .form-check-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="position-sticky p-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-3 text-center">
+                            {% if user.profile.photo %}
+                              <img src="{{ user.profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                            {% else %}
+                              <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                            {% endif %}
+                            <p class="mb-0" style="font-size: 1.2rem; font-weight: bold;">Юліяліс</p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Встановити статус</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваш профіль</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваші сховища</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваш другий пілот</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваші проекти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Твої зірки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваша суть</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваші організації</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваші підприємства</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Ваші спонсори</a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Спробуйте Enterprise <span class="badge bg-secondary">безкоштовно</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Попередній перегляд функції <span class="badge bg-primary">новий</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Налаштування</a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Веб-сайт GitHub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Документи GitHub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Підтримка GitHub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Спільнота GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-10 ms-sm-auto px-md-4">
+                <h1 class="mt-4">Загальнодоступний профіль</h1>
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ім’я</label>
+                        <input type="text" class="form-control" id="name" placeholder="Ваше ім’я">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Публічна електронна пошта</label>
+                        <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="bio" class="form-label">Біографія</label>
+                        <textarea class="form-control" id="bio" rows="3" placeholder="Розкажіть нам трохи про себе"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pronouns" class="form-label">Займенники</label>
+                        <select class="form-select" id="pronouns">
+                            <option selected>Не уточнюйте</option>
+                            <option>Він/його</option>
+                            <option>Вона/її</option>
+                            <option>Вони/їх</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="url" class="form-label">URL</label>
+                        <input type="url" class="form-control" id="url" placeholder="https://example.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="orcid" class="form-label">ORCID ID</label>
+                        <input type="text" class="form-control" id="orcid" placeholder="ORCID ID">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="social_accounts" class="form-label">Соціальні акаунти</label>
+                        <input type="text" class="form-control mb-2" id="social_accounts" placeholder="Посилання на профіль у соц. мережах">
+                        <input type="text" class="form-control mb-2" placeholder="Посилання на профіль у соц. мережах">
+                        <input type="text" class="form-control" placeholder="Посилання на профіль у соц. мережах">
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="show_time">
+                        <label class="form-check-label" for="show_time">
+                            Показати поточний місцевий час
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Оновити профіль</button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
