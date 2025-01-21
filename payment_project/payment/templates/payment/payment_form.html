@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{% static 'payment/style.css' %}">
+
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Select a <span class="highlight">payment</span> method</h2>
+
+        <form method="post">
+        {% csrf_token %}
+        <div class="payment-methods">
+            <label for="visa">
+                <input type="radio" id="visa" name="payment_method" value="visa">
+                <img src="data:image/png;base64,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" alt="Visa">
+                VISA
+            </label>
+
+            <label for="mastercard">
+                <input type="radio" id="mastercard" name="payment_method" value="mastercard">
+                <img src="data:image/png;base64,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" alt="Mastercard">
+                Mastercard
+            </label>
+
+            <label for="paypal">
+                <input type="radio" id="paypal" name="payment_method" value="paypal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal">
+                PayPal
+            </label>
+
+            <label for="monobank">
+                <input type="radio" id="monobank" name="payment_method" value="monobank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OkRXqOkrcx2X3oqbEm184x-DaQHQQ4oaqA&s" alt="Monobank" style="filter: grayscale(100%);">
+                Monobank
+            </label>
+
+        </div>
+
+        <button type="submit">Proceed with Payment</button>
+    </form>
+
+
+    <script src="{% static 'payment/script.js' %}"></script>
+</body>
+</html>
